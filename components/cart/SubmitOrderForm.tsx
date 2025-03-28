@@ -1,6 +1,7 @@
 import { submitOrder } from "@/actions/submit-order-actions";
 import { useStore } from "@/src/store";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const SubmitOrderForm = () => {
   const {
@@ -22,6 +23,17 @@ const SubmitOrderForm = () => {
     errors: [],
     success: "",
   });
+
+  useEffect(() => {
+    if (state.errors) {
+      state.errors.forEach((error) => toast.error(error));
+    }
+
+    if (state.success) {
+      toast.success(state.success);
+      clearState();
+    }
+  }, [state]);
 
   return (
     <form action={dispatch}>
