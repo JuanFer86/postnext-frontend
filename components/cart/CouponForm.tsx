@@ -1,11 +1,15 @@
 import { useStore } from "@/src/store";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import { set } from "zod";
 
 export default function CouponForm() {
   const { applyCoupon, coupon } = useStore((state) => state);
 
+  const [loading, setLoading] = useState(false);
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
 
     const formData = new FormData(e.currentTarget);
     const couponName = formData.get("coupon_name") as string;
@@ -13,6 +17,8 @@ export default function CouponForm() {
     if (couponName.length === 0) return;
 
     await applyCoupon(couponName);
+
+    setLoading(false);
   };
 
   return (
@@ -24,11 +30,13 @@ export default function CouponForm() {
           className="p-2 bg-gray-200 border-gray-300 w-full"
           placeholder="Ingresa un cupón"
           name="coupon_name"
+          disabled={loading}
         />
         <input
           type="submit"
-          className="p-3 bg-green-400 font-bold hover:cursor-pointer"
+          className="p-3 bg-green-400 font-bold hover:cursor-pointer disabled:bg-gray-400"
           value="Canjear"
+          disabled={loading}
         />
       </form>
 

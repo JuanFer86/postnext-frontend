@@ -1,6 +1,6 @@
 import { submitOrder } from "@/actions/submit-order-actions";
 import { useStore } from "@/src/store";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const SubmitOrderForm = () => {
@@ -19,7 +19,7 @@ const SubmitOrderForm = () => {
 
   const submitOrderWithData = submitOrder.bind(null, order);
 
-  const [state, dispatch] = useActionState(submitOrderWithData, {
+  const [state, dispatch, isPending] = useActionState(submitOrderWithData, {
     errors: [],
     success: "",
   });
@@ -39,8 +39,9 @@ const SubmitOrderForm = () => {
     <form action={dispatch}>
       <input
         type="submit"
-        className="mt-5 w-full bg-indigo-600 hover:bg-indigo-700 cursor-pointer text-white uppercase font-bold p-3"
+        className="mt-5 w-full bg-indigo-600 hover:bg-indigo-700 cursor-pointer text-white uppercase font-bold p-3 disabled:bg-gray-400 disabled:cursor-auto"
         value="Confirmar Comprar"
+        disabled={isPending}
       />
     </form>
   );
