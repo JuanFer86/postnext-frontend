@@ -34,7 +34,27 @@ const ShoppingCartContentsSchema = ProductSchema.pick({
 
 export const ShoppingCartSchema = z.array(ShoppingCartContentsSchema);
 
+export const CouponResponseSchema = z.object({
+  name: z.string().default(""),
+  message: z.string(),
+  percentage: z.number().min(0).max(100).default(0),
+});
+
+const OrderContentSchema = z.object({
+  productId: z.number(),
+  quantity: z.number(),
+  price: z.number(),
+});
+export const OrderSchema = z.object({
+  total: z.number(),
+  coupon: z.string(),
+  contents: z
+    .array(OrderContentSchema)
+    .min(1, { message: "El Carrito no puede ir vacio" }),
+});
+
 // types from schemas
 export type ProductType = z.infer<typeof ProductSchema>;
 export type ShoppingCartType = z.infer<typeof ShoppingCartSchema>;
 export type CartItemType = z.infer<typeof ShoppingCartContentsSchema>;
+export type CouponType = z.infer<typeof CouponResponseSchema>;

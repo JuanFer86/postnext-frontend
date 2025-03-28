@@ -2,12 +2,22 @@ import { CartItemType } from "@/src/schemas";
 import { useStore } from "@/src/store";
 import { formatCurrency } from "@/src/utils";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ShoppingCartItem({ item }: { item: CartItemType }) {
   const { updateQuantity, removeFromCart } = useStore((state) => state);
+  const [transition, setTransition] = useState(false);
+
+  useEffect(() => {
+    setTransition(true);
+  }, []);
 
   return (
-    <li className="flex items-center space-x-6 py-6 relative">
+    <li
+      className={`flex items-center space-x-6 py-6 relative transition-opacity duration-400 ${
+        transition ? "opacity-100" : "opacity-0"
+      }`}
+    >
       <div className="h-24 w-24">
         <Image
           src={`${process.env.NEXT_PUBLIC_API_URL}img/${item.image}`}

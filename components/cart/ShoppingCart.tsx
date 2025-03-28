@@ -2,11 +2,13 @@
 
 import { useStore } from "@/src/store";
 import ShoppingCartItem from "./ShoppingCartItem";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Amount from "./Amount";
+import CouponForm from "./CouponForm";
+import SubmitOrderForm from "./SubmitOrderForm";
 
 const ShoppingCart = () => {
-  const { contents, total } = useStore((state) => state);
+  const { contents, total, discount } = useStore((state) => state);
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
@@ -36,8 +38,20 @@ const ShoppingCart = () => {
           </ul>
 
           <dl className="space-y-6 border-t border-gray-200 py-6 text-sm font-medium text-gray-500">
+            {discount > 0 && (
+              <Amount label="Descuento" amount={discount} discount />
+            )}
             <Amount label="Total a Pagar" amount={total} />
           </dl>
+
+          <div
+            className={`transition-opacity duration-400 ${
+              showContent ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <CouponForm />
+            <SubmitOrderForm />
+          </div>
         </>
       ) : (
         <>
