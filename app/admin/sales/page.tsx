@@ -17,9 +17,7 @@ const SalesPage = async () => {
 
   await queryClient.prefetchQuery({
     queryKey: ["sales", formattedDate],
-    queryFn: async () => {
-      await getSalesByDate(formattedDate);
-    },
+    queryFn: async () => await getSalesByDate(formattedDate),
   });
 
   return (
