@@ -4,12 +4,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: process.env.DOMAIN!,
-      },
-      {
         protocol: "https",
-        hostname: process.env.DOMAIN!,
+        hostname: "posnest.onrender.com",
       },
       {
         protocol: "https",

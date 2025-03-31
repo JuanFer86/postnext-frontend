@@ -2,7 +2,7 @@
 
 import { useStore } from "@/src/store";
 import ShoppingCartItem from "./ShoppingCartItem";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Amount from "./Amount";
 import CouponForm from "./CouponForm";
 import SubmitOrderForm from "./SubmitOrderForm";

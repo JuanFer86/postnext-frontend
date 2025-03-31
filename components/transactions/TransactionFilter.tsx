@@ -26,6 +26,7 @@ const TransactionFilter = () => {
     "yyyy-MM-dd"
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const { data, isLoading } = useQuery<Array<any>>({
     queryKey: ["sales", formattedDate],
     queryFn: async () => await getSalesByDate(formattedDate),

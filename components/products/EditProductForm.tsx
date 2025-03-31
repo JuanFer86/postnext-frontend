@@ -27,6 +27,7 @@ const EditProductForm = ({ children }: { children: ReactNode }) => {
       toast.success(state.success);
       router.push("/admin/products?page=1");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (

@@ -1,6 +1,5 @@
 import { useStore } from "@/src/store";
 import { FormEvent, useState } from "react";
-import { set } from "zod";
 
 export default function CouponForm() {
   const { applyCoupon, coupon } = useStore((state) => state);

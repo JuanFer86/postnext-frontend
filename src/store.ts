@@ -37,6 +37,7 @@ export const useStore = create<StoreTypes>()(
     ...initialState,
 
     addToCart: (product) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { id: productId, categoryId, ...data } = product;
       let contents: ShoppingCartType = [];
 

@@ -1,7 +1,6 @@
 import ProductsTable from "@/components/products/ProductsTable";
 import Heading from "@/components/ui/Heading";
 import { ProductResponseSchema } from "@/src/schemas";
-import { products } from "../../../../posnest/src/seeder/data/products";
 import { isValidPage } from "@/src/utils";
 import { redirect } from "next/navigation";
 import Pagination from "@/components/ui/Pagination";

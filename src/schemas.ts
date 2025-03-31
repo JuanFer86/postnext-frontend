@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { Product } from "../../posnest/src/products/entities/product.entity";
 
 export const ProductSchema = z.object({
   id: z.number(),

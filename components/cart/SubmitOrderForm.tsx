@@ -1,6 +1,6 @@
 import { submitOrder } from "@/actions/submit-order-actions";
 import { useStore } from "@/src/store";
-import { useActionState, useEffect, useState } from "react";
+import { useActionState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 const SubmitOrderForm = () => {
@@ -33,6 +33,7 @@ const SubmitOrderForm = () => {
       toast.success(state.success);
       clearState();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (
