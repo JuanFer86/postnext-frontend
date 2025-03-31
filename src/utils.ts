@@ -23,3 +23,16 @@ export function isValidPage(value: number) {
 
   return true;
 }
+
+export function getImagePath(image: string) {
+  const cloudinaryBaseURL = "https://res.cloudinary.com";
+  if (image.startsWith(cloudinaryBaseURL)) {
+    return image;
+  }
+
+  if (process.env.API_URL) return `${process.env.API_URL}img/${image}`;
+
+  return `${process.env.NEXT_PUBLIC_API_URL}img/${image}`;
+}
+
+export const isAvailable = (inventory: number) => inventory > 0;

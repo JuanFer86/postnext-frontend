@@ -9,7 +9,7 @@ const AddProduct = ({ product }: { product: ProductType }) => {
   return (
     <button
       type="button"
-      className="absolute top-5 -right-3"
+      className="absolute top-5 -right-3 cursor-pointer"
       onClick={() => addToCart(product)}
     >
       <svg

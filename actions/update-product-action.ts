@@ -11,6 +11,7 @@ export async function updateProduct(
   const product = ProductFormSchema.safeParse({
     name: formData.get("name") as string,
     price: formData.get("price") as string,
+    image: formData.get("image") as string,
     inventory: formData.get("inventory") as string,
     categoryId: formData.get("categoryId") as string,
   });
