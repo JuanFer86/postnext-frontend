@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "posnest.onrender.com",
       },
+
       {
         protocol: "https",
         hostname: "res.cloudinary.com",
